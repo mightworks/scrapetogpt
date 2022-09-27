@@ -3,4 +3,4 @@
 *.pot
 *.pyc
 __pycache__/
-/scrapeit/*.json
+*.json
