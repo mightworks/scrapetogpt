@@ -1,6 +1,6 @@
 # Scrape to GPT
 
-Scrape to GPT is designed to quickly collect user reviews for a chosen website, and then synthesize those reviews into a concise summary. This makes it easy to get an "at-a-glance" view for what users are saying about a website--beyond just the numerical rating.
+Scrape to GPT is designed to quickly collect user reviews for a given website, and then synthesize those reviews into a concise summary. This makes it easy to get an "at-a-glance" view for what users are saying about a website--beyond just the numerical rating.
 
 ## Installation
 
