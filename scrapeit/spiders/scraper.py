@@ -3,24 +3,27 @@ import scrapy
 class ScrapeIt(scrapy.Spider):
     
     name = 'scrapeit'
-    summarize = True
 
-    def __init__(self, domain='', pages=1, summarize=True):
+    def __init__(self, domain='', pages=1, summarize=False):
             self.start_urls = [f'https://www.trustpilot.com/review/www.{domain}?sort=recency']
+            self.domain = domain
             self.pages = int(pages)
-            self.summarize = {summarize}
+            self.summarize = summarize
             self.current_page = 0
 
     def parse(self, response):
-        for review in response.css('section.styles_reviewContentwrapper__zH_9M'):
+        for review in response.xpath("//article[@data-service-review-card-paper='true']"):
             yield {
-                'title': review.css('h2.typography_appearance-default__AAY17::text').get(),
+                'title': review.xpath(".//h2[@data-service-review-title-typography='true']/text()").get(),
                 'date': review.css('time').attrib['datetime'],
-                'body': review.css('p.typography_body-l__KUYFJ::text').get(),
-                'rating': review.css('div.star-rating_starRating__4rrcf').css('img').attrib['alt'],
+                'body': review.xpath(".//p[@data-service-review-text-typography='true']/text()").get(),
+                'rating': review.xpath(".//div[@data-service-review-rating]").attrib['data-service-review-rating'],
             }
 
-        next_page = response.css('a.pagination-link_next__SDNU4').attrib['href']
+        try:
+            next_page = response.xpath("//a[@data-pagination-button-next-link='true']").attrib['href']
+        except:
+            return
 
         if next_page is not None and self.current_page < self.pages:
             self.current_page += 1

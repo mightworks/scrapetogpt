@@ -5,15 +5,20 @@ from itemadapter import ItemAdapter
 class ScrapeitPipeline:
 
     def open_spider(self, spider):
+        print("Starting scraping..\n")
         self.reviews = []
 
     def close_spider(self, spider):
+        print('Scraping finished.\n')
         if spider.summarize:
-            self.summarize()
+            print('Compiling summary..\n')
+            self.summarize(spider)
 
     def process_item(self, item, spider):
         review = ItemAdapter(item).asdict()
-        self.reviews.append(f"## {review['title']}\n{review['body']}")
+        body = review['body']
+        if body is not None:
+            self.reviews.append(f"{body}")
         return item
 
     def gpt3(self, prompt):        
@@ -22,27 +27,21 @@ class ScrapeitPipeline:
             engine='text-davinci-002',
             prompt=prompt,
             temperature=0.7,
-            max_tokens=1000,
+            max_tokens=400,
             top_p=1.0,
             frequency_penalty=0.0,
             presence_penalty=0.0
         )
         text = response['choices'][0]['text'].strip()
-        print(f'PROMPT: {prompt}\n\n')
-        print(f'RESPONSE: {text}')
         return text
 
-    def summarize(self):
-        # Select 20 random reviews to generate our summary
-        samples = random.sample(self.reviews, 5)
+    def summarize(self, spider):
+        # Select 5 random reviews to generate our summary
+        samples = random.sample(self.reviews, 8)
+        prompt = f'The following are user reviews of {spider.domain}. Write a comprehensive summary synthesizing the information presented in each review.\n\n----------\n'
         
-        # Extract key points from each review
-        key_points = ""
         for sample in samples:
-            prompt = f'Write a list summarizing the key points made in the following user review: "{sample}"\n\nList:\n- '
-            key_points += f'{self.gpt3(prompt)}\n'
+            prompt += f'{sample}\n---------\n'
         
-        # Now write write a master summary using the aggregated key points
-        prompt = f'Below is a list of key findings from different user reviews for a website. Write a paragraph summarizing the pros and cons of the service from the perspective of a third-party.\n\nKey Findings:\n{key_points}\n\nPros:'
-
-        print(f'\n\n\n{self.gpt3(prompt)}')
+        summary = self.gpt3(prompt)
+        print(f'"{summary}"')

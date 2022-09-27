@@ -12,6 +12,7 @@ BOT_NAME = 'scrapeit'
 SPIDER_MODULES = ['scrapeit.spiders']
 NEWSPIDER_MODULE = 'scrapeit.spiders'
 
+LOG_ENABLED = False
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'scrapeit (+http://www.yourdomain.com)'

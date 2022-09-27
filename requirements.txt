@@ -1,0 +1,50 @@
+appdirs==1.4.4
+attrs==22.1.0
+Automat @ file:///tmp/build/80754af9/automat_1600298431173/work
+bcrypt @ file:///tmp/abs_6fpe92qzzo/croots/recipe/bcrypt_1659554336150/work
+brotlipy==0.7.0
+certifi @ file:///opt/conda/conda-bld/certifi_1663615672595/work/certifi
+cffi @ file:///tmp/abs_98z5h56wf8/croots/recipe/cffi_1659598650955/work
+charset-normalizer==2.1.1
+constantly==15.1.0
+cryptography==38.0.1
+cssselect==1.1.0
+et-xmlfile==1.1.0
+filelock==3.8.0
+hyperlink @ file:///tmp/build/80754af9/hyperlink_1610130746837/work
+idna==3.4
+incremental @ file:///tmp/build/80754af9/incremental_1636629750599/work
+itemadapter==0.7.0
+itemloaders==1.0.6
+jmespath==1.0.1
+lxml @ file:///opt/conda/conda-bld/lxml_1657545139709/work
+numpy==1.23.3
+openai==0.23.0
+openpyxl==3.0.10
+pandas==1.5.0
+pandas-stubs==1.5.0.220926
+parsel @ file:///tmp/build/80754af9/parsel_1646739959912/work
+Protego==0.2.1
+pyasn1 @ file:///Users/ktietz/demo/mc3/conda-bld/pyasn1_1629708007385/work
+pyasn1-modules==0.2.8
+pycparser @ file:///tmp/build/80754af9/pycparser_1636541352034/work
+PyDispatcher==2.0.6
+PyHamcrest @ file:///tmp/build/80754af9/pyhamcrest_1615748656804/work
+pyOpenSSL==22.1.0
+PySocks @ file:///home/builder/ci_310/pysocks_1640793678128/work
+python-dateutil==2.8.2
+pytz==2022.2.1
+queuelib==1.6.2
+requests @ file:///opt/conda/conda-bld/requests_1657734628632/work
+requests-file @ file:///Users/ktietz/demo/mc3/conda-bld/requests-file_1629455781986/work
+Scrapy @ file:///tmp/abs_e3bmwi01y8/croots/recipe/scrapy_1659598696235/work
+service-identity==21.1.0
+six @ file:///tmp/build/80754af9/six_1644875935023/work
+tldextract==3.3.1
+tqdm==4.64.1
+Twisted==22.8.0
+types-pytz==2022.2.1.0
+typing_extensions @ file:///tmp/abs_ben9emwtky/croots/recipe/typing_extensions_1659638822008/work
+urllib3==1.26.12
+w3lib==2.0.1
+zope.interface @ file:///home/builder/ci_310/zope.interface_1640811449297/work
